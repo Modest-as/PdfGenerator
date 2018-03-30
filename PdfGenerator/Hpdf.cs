@@ -359,6 +359,10 @@ namespace PdfGenerator
         public const uint HPDF_ENABLE_COPY = 16;
         public const uint HPDF_ENABLE_EDIT = 32;
 
+        // This call is for some reason 
+        // not working. Most likely 
+        // marshaling from char* -> string
+        // is borked.
         [DllImport("Lib\\libhpdf.dll")]
         private static extern string HPDF_GetVersion();
 

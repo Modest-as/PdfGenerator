@@ -61,8 +61,6 @@ namespace PdfGenerator
             const string simpleRandomText = "abcdefgABCDEFG123!#$%&+-@?";
             const string sampText = "The quick brown fox jumps over the lazy dog.";
 
-            Console.WriteLine("libhpdf-" + HPdfDoc.HPdfGetVersion());
-
             try
             {
                 var pdf = new HPdfDoc();
@@ -87,8 +85,8 @@ namespace PdfGenerator
                 page.MoveTextPos(60, page.GetHeight() - 60);
 
                 /*
-             * font size
-             */
+                * font size
+                */
                 float fsize = 8;
                 while (fsize < 60)
                 {
@@ -102,7 +100,7 @@ namespace PdfGenerator
                     var tlen = page.MeasureText(simpleRandomText,
                         page.GetWidth() - 120, false);
 
-                    page.ShowText(simpleRandomText.Substring(0, (int)tlen));
+                    page.ShowText(simpleRandomText.Substring(0, (int) tlen));
 
                     /* print the description. */
                     page.MoveTextPos(0, -10);
@@ -113,8 +111,8 @@ namespace PdfGenerator
                 }
 
                 /*
-             * font color
-             */
+                * font color
+                 */
                 page.SetFontAndSize(font, 8);
                 page.MoveTextPos(0, -30);
                 page.ShowText("Font color");
@@ -125,8 +123,8 @@ namespace PdfGenerator
 
                 for (var i = 0; i < len; i++)
                 {
-                    var r = i / (float)len;
-                    var g = 1 - i / (float)len;
+                    var r = i / (float) len;
+                    var g = 1 - i / (float) len;
                     var buf = simpleRandomText.Substring(i, 1);
 
                     page.SetRGBFill(r, g, 0);
@@ -136,8 +134,8 @@ namespace PdfGenerator
 
                 for (var i = 0; i < len; i++)
                 {
-                    var r = i / (float)len;
-                    var b = 1 - i / (float)len;
+                    var r = i / (float) len;
+                    var b = 1 - i / (float) len;
                     var buf = simpleRandomText.Substring(i, 1);
 
                     page.SetRGBFill(r, 0, b);
@@ -147,8 +145,8 @@ namespace PdfGenerator
 
                 for (var i = 0; i < len; i++)
                 {
-                    var b = i / (float)len;
-                    var g = 1 - i / (float)len;
+                    var b = i / (float) len;
+                    var g = 1 - i / (float) len;
                     var buf = simpleRandomText.Substring(i, 1);
 
                     page.SetRGBFill(0, g, b);
@@ -237,8 +235,8 @@ namespace PdfGenerator
 
                 ShowDescription(page, 320, ypos - 60, "Rotating text");
                 page.BeginText();
-                page.SetTextMatrix((float)Math.Cos(rad1), (float)Math.Sin(rad1),
-                    -(float)Math.Sin(rad1), (float)Math.Cos(rad1),
+                page.SetTextMatrix((float) Math.Cos(rad1), (float) Math.Sin(rad1),
+                    -(float) Math.Sin(rad1), (float) Math.Cos(rad1),
                     330, ypos - 60);
                 page.ShowText("ABCabc123");
                 page.EndText();
@@ -255,7 +253,7 @@ namespace PdfGenerator
                 rad1 = angle1 / 180 * 3.141592f;
                 var rad2 = angle2 / 180 * 3.141592f;
 
-                page.SetTextMatrix(1, (float)Math.Tan(rad1), (float)Math.Tan(rad2), 1,
+                page.SetTextMatrix(1, (float) Math.Tan(rad1), (float) Math.Tan(rad2), 1,
                     320, ypos - 120);
                 page.ShowText("ABCabc123");
                 page.EndText();
